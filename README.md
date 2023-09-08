@@ -16,7 +16,7 @@ Come and check out my YOUTUBE channel for lots more tutorials -> https://www.you
 
 Tiktok Clone: https://github.com/John-Weeks-Dev/tiktok-clone
 
-## App Setup
+## App Set Up
 
 ```
 git clone https://github.com/John-Weeks-Dev/tiktok-clone-api.git
@@ -76,3 +76,4 @@ You should be good to go!
   <img width="660" src="https://user-images.githubusercontent.com/108229029/225041953-662d4517-4df9-4387-994c-d06205f811ef.png">
   <img width="340" src="https://user-images.githubusercontent.com/108229029/225044283-67af4cc8-2897-403f-9cc3-1e844d52771c.png">
 </div>
+
