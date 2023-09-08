@@ -1,6 +1,6 @@
 # Tiktok Clone API (tiktok-clone-api)
 
-### Learn how to build this!
+### Learn how to build this with Ryan!
 
 If you'd like a step by step guide on how to build this just **CLICK THE IMAGE BELOW**
 
