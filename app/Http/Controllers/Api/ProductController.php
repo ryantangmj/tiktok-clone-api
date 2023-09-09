@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\Product;
+use App\Models\Product;
 use App\Services\FileService;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
@@ -12,22 +13,22 @@ class ProductController extends Controller
     public function create(Request $request)
     {
         // Validate the incoming request data
-        $request->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'price' => 'required|numeric',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+        // $request->validate([
+        //     'name' => 'required|string',
+        //     'description' => 'required|string',
+        //     'price' => 'required|numeric',
+        //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // ]);
 
         // Create a new product record
         try {
             $product = new Product;
-            $product->name = $request->input('name');
-            $product->description = $request->input('description');
-            $product->price = $request->input('price');
-            $product->user_id = auth()->user()->id;
-            $product = (new FileService)->addProduct($product, $request);
-            $product->save();
+            // $product->name = $request->input('name');
+            // $product->description = $request->input('description');
+            // $product->price = $request->input('price');
+            // $product->user_id = auth()->user()->id;
+            // $product = (new FileService)->addProduct($product, $request);
+            // $product->save();
     
             // Return a JSON response with the newly created product
             return response()->json(['message' => 'Product created successfully', 'product' => $product], 201); 
