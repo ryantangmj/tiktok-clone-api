@@ -48,4 +48,9 @@ class ProductController extends Controller
         // Return a JSON response with the product information
         return response()->json(['product' => $product], 200);
     }
+
+    public function list() {
+        $products = Product::all();
+        return response()->json(['products' => $products], 200);
+    }
 }
