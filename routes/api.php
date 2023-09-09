@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\LikeController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,5 +41,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::post('/likes', [LikeController::class, 'store']);
     Route::delete('/likes/{id}', [LikeController::class, 'destroy']);
+
+    Route::post('/products', [ProductController::class, 'create']);
+    Route::get('/products/{id}', [ProductController::class, 'show']);
 
 });

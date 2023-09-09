@@ -45,4 +45,18 @@ class FileService
 
         return $model;
     }
+
+    public function addProduct($model, $request)
+    {
+        $image = Image::make($request->file('image'));
+
+        $file = $request->file('image');
+        $extension = $file->getClientOriginalExtension();
+
+        $name = time() . '.' . $extension;
+        $image->save(public_path() . '/files/' . $name);
+        $model->image = '/files/' . $name;
+
+        return $model;
+    }
 }
