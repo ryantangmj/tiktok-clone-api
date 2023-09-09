@@ -12,23 +12,23 @@ class ProductController extends Controller
     // Create a new product
     public function create(Request $request)
     {
-        // Validate the incoming request data
-        // $request->validate([
-        //     'name' => 'required|string',
-        //     'description' => 'required|string',
-        //     'price' => 'required|numeric',
-        //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        // ]);
+         //Validate the incoming request data
+         $request->validate([
+             'name' => 'required|string',
+             'description' => 'required|string',
+             'price' => 'required|numeric',
+             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+         ]);
 
         // Create a new product record
         try {
             $product = new Product;
-            // $product->name = $request->input('name');
-            // $product->description = $request->input('description');
-            // $product->price = $request->input('price');
-            // $product->user_id = auth()->user()->id;
-            // $product = (new FileService)->addProduct($product, $request);
-            // $product->save();
+            $product->name = $request->input('name');
+            $product->description = $request->input('description');
+            $product->price = $request->input('price');
+            $product->user_id = auth()->user()->id;
+            $product = (new FileService)->addProduct($product, $request);
+            $product->save();
     
             // Return a JSON response with the newly created product
             return response()->json(['message' => 'Product created successfully', 'product' => $product], 201); 
