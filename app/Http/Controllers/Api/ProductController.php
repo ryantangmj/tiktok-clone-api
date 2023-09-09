@@ -20,7 +20,6 @@ class ProductController extends Controller
              'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
          ]);
 
-        // Create a new product record
         try {
             $product = new Product;
             $product->name = $request->input('name');
@@ -29,10 +28,8 @@ class ProductController extends Controller
             $product->user_id = auth()->user()->id;
             $product = (new FileService)->addProduct($product, $request);
             $product->save();
-    
-            // Return a JSON response with the newly created product
-            return response()->json(['message' => 'Product created successfully', 'product' => $product], 201); 
-        }
+            return response()->json(['message' => 'Product created successfully', 'product' => $product], 201);
+         }
         catch (\Exception $e) {
             return response()->json(['message' => 'Product creation failed!', 'error' => $e->getMessage()], 409);
         }
