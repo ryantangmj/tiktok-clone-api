@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Like;
 use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Models\User;
+use App\Http\Resources\LikesCollection;
+use App\Http\Resources\UsersCollection;
+use App\Http\Resources\PostsCollection;
 
 class LikeController extends Controller
 {
@@ -21,6 +26,13 @@ class LikeController extends Controller
             $like->user_id = auth()->user()->id;
             $like->post_id = $request->input('post_id');
             $like->save();
+
+            $post = Post::find($like->post_id);
+            if ($post) {
+                $receiver = $post->user; 
+                $amountToAdd = 1; 
+                $receiver->increment('currency', $amountToAdd);
+                }
 
             return response()->json([
                 'like' => [
@@ -45,6 +57,13 @@ class LikeController extends Controller
             if (count(collect($like)) > 0) {
                 $like->delete();
             }
+
+            $post = Post::find($like->post_id);
+                if ($post) {
+                    $receiver = $post->user; 
+                    $amountToAdd = -1; 
+                    $receiver->increment('currency', $amountToAdd);
+                }
 
             return response()->json([
                 'like' => [
