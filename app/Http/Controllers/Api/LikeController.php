@@ -40,7 +40,8 @@ class LikeController extends Controller
                     'post_id' => $like->post_id,
                     'user_id' => $like->user_id
                 ],
-                'success' => 'OK'
+                'success' => 'OK',
+                'currency' => $receiver->currency
             ], 200);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 400);
@@ -71,7 +72,8 @@ class LikeController extends Controller
                     'post_id' => $like->post_id,
                     'user_id' => $like->user_id
                 ],
-                'success' => 'OK'
+                'success' => 'OK',
+                'currency' => $receiver->currency
             ], 200);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 400);

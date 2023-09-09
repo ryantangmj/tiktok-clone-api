@@ -21,7 +21,7 @@ class ProfileController extends Controller
 
             return response()->json([
                 'posts' => new AllPostsCollection($posts),
-                'user' => new UsersCollection($user)
+                'user' => new UsersCollection($user),
             ], 200);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 400);
